@@ -6,21 +6,29 @@ build-backend = "uv_build"
 name = "koka"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="HerringtonDarkholme" },
 ]
-description = "A small example package"
+description = "Algebraic effects for Python - dependency injection and typed error handling inspired by Koka"
 readme = "README.md"
 requires-python = ">=3.13"
+keywords = ["effects", "algebraic-effects", "dependency-injection", "error-handling", "koka", "functional-programming"]
 classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
+    "Typing :: Typed",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Homepage = "https://github.com/HerringtonDarkholme/koka"
+Repository = "https://github.com/HerringtonDarkholme/koka"
+Issues = "https://github.com/HerringtonDarkholme/koka/issues"
+Documentation = "https://github.com/HerringtonDarkholme/koka#readme"
 
 [project.optional-dependencies]
 dev = [
