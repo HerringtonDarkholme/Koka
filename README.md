@@ -186,50 +186,7 @@ uv run ruff check . && uv run pyright && uv run pytest
 
 ## Why Koka?
 
-### vs. Traditional Dependency Injection
-
-Traditional DI frameworks use global state, magic decorators, or complex container configurations. Koka uses explicit, composable effects:
-
-```python
-# Traditional DI - global state, implicit
-@inject
-def handler(db: Database = Depends()):
-    ...
-
-# Koka - explicit, functional, composable
-def handler():
-    db = yield from Dep(Database)
-    ...
-```
-
-### vs. Try/Catch Exception Handling
-
-Exceptions use invisible control flow and aren't typed. Koka makes errors explicit and type-safe:
-
-```python
-# Traditional - exceptions are invisible in type signatures
-def get_user(id: str) -> User:  # Can raise ValueError, KeyError, etc.
-    ...
-
-# Koka - errors are part of the return type
-def get_user(id: str) -> Eff[ValidationError | NotFoundError, User]:
-    ...
-```
-
-### Composability
-
-Effects can call other effects naturally:
-
-```python
-def authenticate(token: str):
-    auth = yield from Dep(AuthService)
-    return auth.verify(token)
-
-def protected_operation(token: str):
-    user = yield from authenticate(token)  # Compose effects!
-    db = yield from Dep(Database)
-    return db.get_data(user)
-```
+The answer can be found in effect.ts homepage. To summarize, make as much type checked and compiler managed as possible.
 
 ## Project Structure
 
@@ -275,6 +232,31 @@ Error effect for typed error handling.
 ### `Eff[K, R]`
 
 Type alias for effect computations: `Generator[K, Never, R]`
+
+## Inspiration & Credits
+
+This project draws inspiration from several excellent projects in the algebraic effects and functional programming space:
+
+### 🌟 Primary Inspirations
+
+- **[Koka Language](https://github.com/koka-lang/koka)** - The pioneering research language for algebraic effect handlers by Daan Leijen. Koka's elegant design of effect types and handlers is the foundation for this library's approach to effects in Python.
+
+- **[Effect-TS](https://effect.website/)** - A powerful effect system for TypeScript that brings functional programming patterns to the JavaScript ecosystem. Effect-TS demonstrates how algebraic effects can be practical and ergonomic in mainstream languages.
+
+### 💡 Related Projects
+
+- **[koka-ts](https://github.com/koka-ts/koka)** - TypeScript implementation of Koka-style effect handlers, showing how these concepts can be adapted to languages with different type systems.
+
+- **[stateless](https://github.com/suned/stateless/)** - A Python library for building type-safe, composable state machines and effects. Demonstrates how generator-based effects can work elegantly in Python.
+
+### 🙏 Acknowledgments
+
+Special thanks to:
+- **Daan Leijen** for the groundbreaking research on algebraic effects in Koka
+- The **Effect-TS** team for showing how effects can be practical and developer-friendly
+- The maintainers of **koka-ts** and **stateless** for exploring effect systems in TypeScript and Python
+
+This project stands on the shoulders of giants. While it's a toy implementation for learning and fun, it aims to bring some of the elegance of Koka-style effects to modern Python.
 
 ## Contributing
 
