@@ -96,7 +96,7 @@ class Koka[K = Never]:
 
                 # Handle Err[E] - error effect
                 elif isinstance(effect, Exception):
-                    return effect
+                    return effect  # type: ignore[return-value]
 
                 # Unknown effect
                 else:

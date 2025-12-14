@@ -44,8 +44,13 @@ match result:
 ## Installation
 
 ```bash
-# Note: Not yet published to PyPI
-# For now, install from source:
+# Install from PyPI
+pip install koka
+
+# Or with uv
+uv pip install koka
+
+# For development
 git clone https://github.com/HerringtonDarkholme/koka
 cd koka
 uv sync --all-extras
