@@ -191,7 +191,15 @@ uv run ruff check . && uv run pyright && uv run pytest
 
 ## Why Koka?
 
-The answer can be found in effect.ts homepage. To summarize, make as much type checked and compiler managed as possible.
+For a detailed explanation of the motivation and design behind this library, read the blog post:
+
+**[Koka: Type-Checked Dependency Injection and Error Handling in Python](https://dev.to/herrington_darkholme/kokapy-type-checked-dependency-injection-and-error-handling-in-python-1beg)**
+
+In short: Koka answers two questions that Python's type system traditionally can't:
+1. **What dependencies does this function need?**
+2. **What errors can this function raise?**
+
+With Koka, your type checker knows the answers—no source code reading required.
 
 ## Project Structure
 
